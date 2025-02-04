@@ -11,6 +11,7 @@ module.exports = {
       exposes: {
         // Expose components or modules from the remote app
         "./ProductList": "./src/app/product-list/product-list.component.ts",
+        "./CartList": "./src/app/cart-list/cart-list.component.ts",
       },
       shared: {
         "@angular/core": { singleton: true },
