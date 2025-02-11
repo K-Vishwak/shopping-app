@@ -8,7 +8,8 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:host-app": "node dist/host-app/server/server.mjs",
-    "serve:ssr:remote-app": "node dist/remote-app/server/server.mjs"
+    "serve:ssr:remote-app": "node dist/remote-app/server/server.mjs",
+    "serve:ssr:micro-frontend": "node dist/micro-frontend/server/server.mjs"
   },
   "private": true,
   "dependencies": {

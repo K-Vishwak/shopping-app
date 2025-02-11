@@ -9,11 +9,12 @@ import { RouterOutlet } from '@angular/router';
 import { loadRemoteModule } from '@angular-architects/module-federation';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { ProductsModule } from '../../../remote-app/products.module';
+import { CheckoutComponent } from '../../../micro-frontend/checkout/checkout.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, ProductsModule],
+  imports: [CommonModule, RouterOutlet, ProductsModule, CheckoutComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
@@ -21,15 +22,28 @@ export class AppComponent implements OnInit, OnDestroy {
   constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
   title = 'host-app';
 
-  loadModule(module: string) {
-    loadRemoteModule({
-      remoteName: 'remoteApp',
-      remoteEntry: 'http://localhost:4201/remoteEntry.js',
-      exposedModule: module,
-    });
-  }
-  productListComponent = this.loadModule('./ProductList');
-  cartListComponent = this.loadModule('./CartList');
+  // loadModule(name: string, module: string, url: string) {
+  //   return loadRemoteModule({
+  //     remoteName: name,
+  //     remoteEntry: url,
+  //     exposedModule: module,
+  //   });
+  // }
+  // productListComponent = this.loadModule(
+  //   'remoteApp',
+  //   './ProductList',
+  //   'http://localhost:4201/remoteEntry.js'
+  // );
+  // cartListComponent = this.loadModule(
+  //   'remoteApp',
+  //   './CartList',
+  //   'http://localhost:4201/remoteEntry.js'
+  // );
+  // checkoutComponent = this.loadModule(
+  //   'microApp',
+  //   './Checkout',
+  //   'http://localhost:4202/remoteEntry.js'
+  // );
 
   eventHandler = (event: Event) => {
     const customEvent = event as CustomEvent;
